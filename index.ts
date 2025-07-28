@@ -31,7 +31,10 @@ type Track = {
 };
 
 //================================================================================================================================
-//Practice LVL 2 (N3)
+
+//Practice LVL 2 (N3) Hotel
+//================================================================================================================================
+
 
 enum RoomType{
     single = "Single",
@@ -197,3 +200,179 @@ function enterRoomDescription(room:Room){
 
 }
 
+//================================================================================================================================
+
+//Practic LVL 1 (N1) Сar
+//================================================================================================================================
+
+class Car{
+    private brand: string;
+    private year: number;
+    private mileage: number;
+    private gasolinCapacity: number;
+    private fuelConsumption: number;
+
+    constructor (brand: string, year: number, fuelConsumption: number){
+        this.brand = brand;
+        this.year = year;
+        this.fuelConsumption = fuelConsumption;
+    }
+
+    drive (km: number): number{
+        return (km * this.fuelConsumption) / 100;
+    }
+
+    getMileage() : number{
+        return this.mileage;
+    }
+
+    getGasolinCapacity() : number{
+        return this.gasolinCapacity;
+    }
+
+    setGasolinCapacity(gasolinCapacity: number){
+         this.gasolinCapacity = gasolinCapacity;;
+    }
+}
+
+
+//================================================================================================================================
+
+//Practic LVL 1 (N2) Comment
+//================================================================================================================================
+enum Status{
+    buyer,
+    seller
+}
+
+
+class Comment { 
+    private static id: number;
+    private userBuyer:User;
+    private userSeller:User;
+    private product: Product;
+    private text: string;
+    private advantages: string;
+    private weaknesses: string;
+    private stars: number;
+
+   constructor(userBuyer:User, userSeller:User, product: Product, text:string, advantages: string, weaknesses: string, stars: number){
+        Comment.id ++;
+        this.userBuyer = userBuyer;
+        this.userSeller = userSeller;
+        this.product = product;
+        this.text = text;
+        this.advantages = advantages;
+        this.weaknesses = weaknesses;
+        this.stars = stars;
+    }
+}
+
+class CommentService{
+    private categories: Comment[] = []; //думаю это не нужно так как для этого есть json
+    constructor(){
+        //добавление Comment 
+    }
+
+    //CRUD functions
+
+    showComment(comment: Comment){
+        //ввывод данных
+    }
+}
+
+class Answer{
+    private static id: number;
+    private commentId: number
+    private userId: number;
+    private text: string;
+
+    constructor(text:string,commentId: number, userId:number){
+        Answer.id ++;
+        this.text = text;
+        this.commentId = commentId;
+        this.userId = userId;
+    }
+}
+
+class AnswerService{
+    private categories: Answer[] = []; //думаю это не нужно так как для этого есть json
+    constructor(){
+        //добавление Answer 
+    }
+
+    //CRUD functions
+
+    answer (text:string){
+        //ответ на комент данных
+    }
+}
+
+class User{
+    private static id: number;
+    private name: string;
+    private password: string;
+    private gmail: string;
+    private status:Status
+
+    constructor(name: string, password: string, gmail: string,status:Status){
+        User.id ++; // (User.) because (this.) dosen`t worked 
+        this.name = name;
+        this.password = password;
+        this.gmail = gmail;
+        this.status = status;
+    }
+}
+
+class UserService{
+    private categories: User[] = []; //думаю это не нужно так как для этого есть json
+    constructor(){
+        //добавление User 
+    }
+
+    //CRUD functions
+}
+
+class Product{
+    private static id: number;
+    private name: string;
+    private discription: string;
+    private category: Category
+
+    constructor(name: string, discription: string, category: Category){
+        Product.id ++; // (Product.) because (this.) dosen`t worked 
+        this.name = name;
+        this.discription = discription;
+        this.category = category;
+    }
+}
+
+class ProductService{
+    private categories: ProductService[] = []; //думаю это не нужно так как для этого есть json
+    constructor(){
+        //добавление Product 
+    }
+
+    //CRUD functions
+}
+
+class Category{
+    private static id: number;
+    private name: string;
+
+     constructor(name: string){
+        Category.id ++; // (Product.) because (this.) dosen`t worked 
+        this.name = name;
+    }
+}
+
+class CategoryService{
+    private categories: Category[] = []; //думаю это не нужно так как для этого есть json
+    constructor(){
+        //добавление Category 
+    }
+
+    //CRUD functions
+}
+
+//================================================================================================================================
