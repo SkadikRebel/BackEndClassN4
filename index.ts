@@ -1,17 +1,18 @@
-import { Console } from 'console';
 import bands from './bandsDiff.json';
 
 type MusicBand = {
   name: string;
   genre: string;
-  members: BandMember[];
   originCountry: string;
   foundedYear: number;
   isStillActive: boolean;
+  trackCount: number;
+  albumCount: number;
+  members: BandMember[];
   albums: Album[];
 };
 
-type BandMember = {
+type BandMember = { 
   name: string;
   instrument: string;
   birthYear: number;
@@ -20,16 +21,22 @@ type BandMember = {
 };
 
 type Album = {
+  id: number;
   title: string;
   releaseYear: number;
   tracks: Track[];
 };
 
 type Track = {
+  id: number;
   title: string;
   durationInSeconds: number;
+  releaseYear: number;
 };
 
+
+
+const musicBands: MusicBand[] = bands;
 //================================================================================================================================
 
 //Practice LVL 2 (N3) Hotel
@@ -186,13 +193,17 @@ class HotelService{
 }
 
 //Main
+try{
 const hotelservice = new HotelService();
 const hotel:Hotel = hotelservice.createHotel("C.New York str. Red Lights 1", 3, 10, Stars.five); 
 
 enterRoomDescription(hotelservice.serchRoom(hotel,RoomType.suite,2));
-
+}
+catch (e){
+    console.log(e.message);
+}
 function enterRoomDescription(room:Room){   
-    if(room == null) throw new Error("Not avaiable rooms");
+    if(room == null)throw new Error("Not avaiable rooms");
     console.log(`Type: ${room.getType.toString()}`);
     console.log(`Number: ${room.getNumber}`);
     console.log(`Floor: ${room.getFloor}`);
@@ -266,6 +277,54 @@ class Comment {
         this.weaknesses = weaknesses;
         this.stars = stars;
     }
+
+    get getId():number{
+        return Comment.id;
+    }
+
+    get getUserBuyer(): User{
+        return this.userBuyer;
+    }
+
+    get getUserSeller(): User{
+        return this.userSeller;
+    }
+
+    get getProduct(): Product{
+        return this.product;
+    }
+
+
+    get getText(): string{
+        return this.text;
+    }
+    set setText(text: string){
+        this.text =text;
+    }
+
+
+    get getAdvantages(): string{
+        return this.advantages;
+    }
+    set setAdvantages(text: string){
+        this.advantages = text;
+    }
+
+
+    get getWeaknesses(): string{
+        return this.weaknesses;
+    }
+    set setWeaknesses(text: string){
+        this.weaknesses = text;
+    }
+
+
+    get getStars(): number{
+        return this.stars;
+    }
+    set setStars(stars: number){
+        stars = this.stars;
+    }
 }
 
 class CommentService{
@@ -292,6 +351,28 @@ class Answer{
         this.text = text;
         this.commentId = commentId;
         this.userId = userId;
+    }
+
+    get getId(): number{
+        return Answer.id;
+    }
+
+
+    get getText(): string{
+        return this.text;
+    }
+    set setText(text: string){
+        this.text = text;
+    }
+
+
+    get getCommentId(): number{
+        return this.commentId;
+    }
+
+
+    get getUserId(): number{
+        return this.userId;
     }
 }
 
@@ -322,6 +403,42 @@ class User{
         this.gmail = gmail;
         this.status = status;
     }
+
+    get getId(): number{
+        return User.id;
+    }
+
+
+    get getName(): string{
+        return this.name;
+    }
+    set setName(text: string){
+        this.name = text;
+    }
+
+
+    get getPassword(): string{
+        return this.password;
+    }
+    set setPassword(text: string){
+        this.password = text;
+    }
+
+
+    get getGmail(): string{
+        return this.gmail;
+    }
+    set setGmail(text: string){
+       this.gmail = text;
+    }
+
+
+    get getStatus(): Status{
+        return this.status;
+    }
+    set setStatus(status: Status){
+        this.status = status;
+    }
 }
 
 class UserService{
@@ -345,6 +462,34 @@ class Product{
         this.discription = discription;
         this.category = category;
     }
+
+
+    get getId(): number{
+        return Product.id;
+    }
+
+    get getName(): string{
+        return this.name;
+    }
+    set setName(text: string){
+        this.name = text;
+    }
+
+
+    get getDiscription(): string{
+        return this.discription;
+    }
+    set setDiscription(text: string){
+        this.discription = text;
+    }
+
+
+    get getCategory(): Category{
+        return this.category;
+    }
+    set setCategory(text: Category){
+        this.category = text;
+    }
 }
 
 class ProductService{
@@ -364,6 +509,17 @@ class Category{
         Category.id ++; // (Product.) because (this.) dosen`t worked 
         this.name = name;
     }
+
+    get getId(){
+        return Category.id;
+    }
+
+    get getName(): string{
+        return this.name;
+    }
+    set setName(text: string){
+        this.name = text;
+    }
 }
 
 class CategoryService{
@@ -376,3 +532,111 @@ class CategoryService{
 }
 
 //================================================================================================================================
+
+//Array (N1) 
+//================================================================================================================================  
+
+const albumCount = musicBands.reduce((acamulator, band) => {return acamulator += band.albumCount},0 );
+
+//================================================================================================================================
+
+//Array (N2) 
+//================================================================================================================================  
+
+musicBands.forEach(band => {
+    band.albums.forEach(album =>{
+        album.tracks.forEach(track => {
+            if(track.durationInSeconds>250){
+                console.log(`${band.name} - ${track.title} X ${Math.trunc(track.durationInSeconds / 60)} У ${track.durationInSeconds%60}`);
+            }
+        })
+    })
+});
+
+//================================================================================================================================
+
+//Array (N3) 
+//================================================================================================================================ 
+enum OriginCountrys{
+    USA = "USA",
+    UK = "UK",
+}
+
+const listCountry:string[] = Object.keys(OriginCountrys);
+let membersNameInCountry: Record<OriginCountrys, string[]>=
+{
+    UK: [],
+    USA: []
+}; 
+// если у меня тип  OriginCountrys  то мне нужно сразу инициализировать Record  и за этого на прошлой лекии я использовал string
+// потому-что не знал что его нужно сразу определить. И и за этого отпадает нужда в проверке через Includs 
+
+listCountry.forEach((countryCode)=>{
+    const countryBands = musicBands.filter(band => band.originCountry == countryCode)
+    let membersName: string[] =[];
+    countryBands.forEach((band)=>{
+        band.members.forEach((member)=>{
+            membersName.push(member.name);
+        });
+    });
+    membersNameInCountry[countryCode] = membersName;
+});
+
+console.log(membersNameInCountry[OriginCountrys.UK]);
+
+//================================================================================================================================
+
+//Array (N4) 
+//================================================================================================================================
+
+//порахував :)
+
+const membersCount = musicBands.reduce((acamulator, band) => {return acamulator += band.members.length},0 );
+console.log(membersCount);
+
+//================================================================================================================================
+
+//Array (N5) 
+//================================================================================================================================
+
+const membersList : BandMember[] = musicBands.flatMap((band)=>{return band.members});
+const membersPlayOnGuitar = membersList.filter(memb => memb.instrument == "Guitar");
+membersPlayOnGuitar.sort(function(a, b) {
+        return b.birthYear - a.birthYear;
+});
+console.log(membersPlayOnGuitar)
+
+//================================================================================================================================
+
+//Array (N6) 
+//================================================================================================================================
+
+const bandsName = musicBands.map((band)=>{return band.name});
+
+const bandsAlbums = musicBands.flatMap((band)=>{return band.albums});
+const albumsTitle =  bandsAlbums.map((albums)=>{return albums.title});
+
+const albumsTrack = bandsAlbums.flatMap((albums)=>{return albums.tracks});
+const tracksTitle = albumsTrack.map((track)=>{return track.title});
+let counter = 0;
+
+counter=serchLetters("a",bandsName);
+counter=serchLetters("a",albumsTitle);
+counter=serchLetters("a",tracksTitle);
+
+
+console.log(counter);
+
+
+function serchLetters(letter: string, array:Array<string>):number{
+    let counter=0;
+    array.forEach(item => {
+        
+        for(let i = 0; i<item.length;i++){
+            if(item[i].toUpperCase() == letter.toUpperCase()){
+                counter++;
+            }
+        }
+    });
+    return counter;
+}

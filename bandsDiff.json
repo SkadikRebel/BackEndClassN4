@@ -31,7 +31,7 @@
           { "id": 3, "title": "Let It Be", "durationInSeconds": 243, "releaseYear": 1970 },
           { "id": 4, "title": "The Long and Winding Road", "durationInSeconds": 211, "releaseYear": 1970 },
           { "id": 5, "title": "Across the Universe", "durationInSeconds": 228, "releaseYear": 1970 },
-          { "id": null, "title": null, "durationInSeconds": null, "releaseYear": null }
+          { "id": 6, "title": "I Me Mine", "durationInSeconds": 136, "releaseYear": 1970 }
         ]
       }
     ]
@@ -48,7 +48,7 @@
       { "name": "Freddie Mercury", "instrument": "Vocals", "birthYear": 1946, "joinedYear": 1970, "leftYear": 1991 },
       { "name": "Brian May", "instrument": "Guitar", "birthYear": 1947, "joinedYear": 1970 },
       { "name": "Roger Taylor", "instrument": "Drums", "birthYear": 1949, "joinedYear": 1970 },
-      { "name": "John Deacon", "instrument": "Bass", "birthYear": 1951, "joinedYear": 1971, "leftYear": 1997 }, {}
+      { "name": "John Deacon", "instrument": "Bass", "birthYear": 1951, "joinedYear": 1971, "leftYear": 1997 }
     ],
     "albums": [
       {
@@ -78,7 +78,7 @@
     "foundedYear": 1987,
     "isStillActive": false,
     "trackCount": 78,
-    "albumCount": -212,
+    "albumCount": 212,
     "members": [
       { "name": "Kurt Cobain", "instrument": "Vocals/Guitar", "birthYear": 1967, "joinedYear": 1987, "leftYear": 1994 },
       { "name": "Krist Novoselic", "instrument": "Bass", "birthYear": 1965, "joinedYear": 1987 },
@@ -88,7 +88,7 @@
       {
         "id": 1,
         "title": "Nevermind",
-        "releaseYear": 0,
+        "releaseYear": 1991,
         "tracks": [
           { "id": 1, "title": "Smells Like Teen Spirit", "durationInSeconds": 301, "releaseYear": 1991 },
           { "id": 2, "title": "Come as You Are", "durationInSeconds": 219, "releaseYear": 1991 }
@@ -117,7 +117,7 @@
       { "name": "David Gilmour", "instrument": "Guitar", "birthYear": 1946, "joinedYear": 1967 },
       { "name": "Roger Waters", "instrument": "Bass", "birthYear": 1943, "joinedYear": 1965, "leftYear": 1985 },
       { "name": "Richard Wright", "instrument": "Keyboards", "birthYear": 1943, "joinedYear": 1965, "leftYear": 2008 },
-      { "name": "undefined", "instrument": "Drums", "birthYear": 1944, "joinedYear": 1965 }
+      { "name": "Sid Barrett", "instrument": "Drums", "birthYear": 1944, "joinedYear": 1965 }
     ],
     "albums": [
       {
@@ -125,7 +125,7 @@
         "title": "The Dark Side of the Moon",
         "releaseYear": 1973,
         "tracks": [
-          { "id": 1, "title": "Time", "durationInSeconds": -123980, "releaseYear": 1973 },
+          { "id": 1, "title": "Time", "durationInSeconds": 123980, "releaseYear": 1973 },
           { "id": 2, "title": "Money", "durationInSeconds": 382, "releaseYear": 1973 }
         ]
       },
@@ -209,18 +209,18 @@
         ]
       }
     ]
-  },{},
+  },
   {
     "name": "Foo Fighters",
     "genre": "Rock",
-    "originCountry": "",
+    "originCountry": "USA",
     "foundedYear": 1994,
     "isStillActive": true,
     "trackCount": 98,
     "albumCount": 8,
     "members": [
       { "name": "Dave Grohl", "instrument": "Vocals/Guitar", "birthYear": 1969, "joinedYear": 1994 },
-      { "name": "", "instrument": "Bass", "birthYear": 1968, "joinedYear": 1995 },{},
+      { "name": "Pet Smir", "instrument": "Bass", "birthYear": 1968, "joinedYear": 1995 },
       { "name": "Taylor Hawkins", "instrument": "Drums", "birthYear": 1972, "joinedYear": 1997, "leftYear": 2022 }
     ],
     "albums": [
@@ -229,7 +229,7 @@
         "title": "The Colour and the Shape",
         "releaseYear": 1997,
         "tracks": [
-          { "id": 1, "title": "Everlong", "durationInSeconds": 250, "releaseYear": 1997 },{},
+          { "id": 1, "title": "Everlong", "durationInSeconds": 250, "releaseYear": 1997 },
           { "id": 2, "title": "My Hero", "durationInSeconds": 260, "releaseYear": 1997 }
         ]
       },
@@ -238,7 +238,7 @@
         "title": "Wasting Light",
         "releaseYear": 2011,
         "tracks": [
-          { "id": 3, "title": null, "durationInSeconds": 252, "releaseYear": 2011 },
+          { "id": 3, "title": "Rope", "durationInSeconds": 252, "releaseYear": 2011 },
           { "id": 4, "title": "Walk", "durationInSeconds": 265, "releaseYear": 2011 }
         ]
       }
